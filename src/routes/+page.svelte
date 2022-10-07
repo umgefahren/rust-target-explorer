@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import rust_logo from '$lib/assets/rust-logo.svg';
 </script>
 
@@ -13,7 +14,7 @@
 </header>
 
 <div class="grid grid-cols-1 m-5 bg-blue-700 p-5 rounded-lg">
-	<a href="/targets">
+	<a href="{base}/targets">
 		<div class="text-3xl grid grid-cols-5">
 			<h1 class="col-span-3 self-center text-4xl ml-4">Targets</h1>
             <div class="col-span-2 text-xl rounded-lg bg-blue-600 p-2">
@@ -24,7 +25,7 @@
             </div>
 		</div>
 	</a>
-	<a href="/cpu/">
+	<a href="{base}/cpu/">
 		<div class="text-3xl grid grid-cols-5 mt-10">
 			<h1 class="col-span-3 self-center text-4xl ml-4">CPUs</h1>
 		</div>

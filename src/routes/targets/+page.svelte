@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import targets from '$lib/assets/data/data.json';
 
 	import type { Target, Feature } from '$lib/target';
@@ -59,8 +60,8 @@
 <div class="p-4">
 	<div class="bg-blue-300 p-2 rounded-lg breadcrumbs">
 		<ul>
-            <li><a href="/">Home</a></li>
-			<li><a href="/targets">Targets</a></li>
+            <li><a href="{base}/">Home</a></li>
+			<li><a href="{base}/targets">Targets</a></li>
 		</ul>
 	</div>
 </div>
@@ -118,12 +119,12 @@
 		<tbody>
 			{#each ts as target}
 				<tr class="bg-blue-300">
-					<td class="border border-slate-700 p-2"><a href="/targets/{target.name}">{target.name}</a></td>
-					<td class="border border-slate-700 p-2"><a href="/cpu/{target.arch}">{target.arch}</a></td>
+					<td class="border border-slate-700 p-2"><a href="{base}/targets/{target.name}">{target.name}</a></td>
+					<td class="border border-slate-700 p-2"><a href="{base}/cpu/{target.arch}">{target.arch}</a></td>
 					<td class="border border-slate-700 p-2">{target.os}</td>
 					<td class="border border-slate-700 p-2">{target.family}</td>
 					<td class="border border-slate-700 p-2">{target.cfgs.length}</td>
-					<td class="border border-slate-700 p-2"><a href="/cpu/{target.arch}">{target.cpus.length}</a></td>
+					<td class="border border-slate-700 p-2"><a href="{base}/cpu/{target.arch}">{target.cpus.length}</a></td>
 					<td class="border border-slate-700 p-2">{target.features.length}</td>
 				</tr>
 			{/each}

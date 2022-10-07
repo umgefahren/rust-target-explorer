@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import type { Cpu } from '$lib/cpu';
 	import type { Feature, features_map } from '$lib/target';
 
@@ -21,9 +22,9 @@
 <div class="p-4">
 	<div class="bg-blue-300 p-2 rounded-lg breadcrumbs">
 		<ul>
-            <li><a href="/">Home</a></li>
-			<li><a href="/cpu/">CPU</a></li>
-			<li><a href="/cpu/{data.arch}">{data.arch}</a></li>
+            <li><a href="{base}/">Home</a></li>
+			<li><a href="{base}/cpu/">CPU</a></li>
+			<li><a href="{base}/cpu/{data.arch}">{data.arch}</a></li>
 		</ul>
 	</div>
 </div>
@@ -33,7 +34,7 @@
 		<h1 class="text-2xl">CPUs:</h1>
 		<ul class="list-disc list-inside">
 			{#each data.cpus as a}
-				<li><a href="/cpu/{data.arch}/{a.name}/">{a.name}</a></li>
+				<li><a href="{base}/cpu/{data.arch}/{a.name}/">{a.name}</a></li>
 			{/each}
 		</ul>
         <div class="form-control">

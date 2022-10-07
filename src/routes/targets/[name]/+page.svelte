@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import { cpus_on_arch } from '$lib/cpu';
 import type { Target } from '$lib/target';
 	export let data: Target;
@@ -12,8 +13,8 @@ import type { Target } from '$lib/target';
 <div class="p-4">
 	<div class="bg-blue-300 p-2 rounded-lg breadcrumbs">
 		<ul>
-            <li><a href="/">Home</a></li>
-			<li><a href="/targets/">Target</a></li>
+            <li><a href="{base}/">Home</a></li>
+			<li><a href="{base}/targets/">Target</a></li>
 			<li>{data.name}</li>
 		</ul>
 	</div>
@@ -27,7 +28,7 @@ import type { Target } from '$lib/target';
 				<tr>
 					<td class="border-4 p-2"> Arch </td>
 					<td class="border-4 p-2">
-						<a href="/cpu/{data.arch}">{data.arch}</a>
+						<a href="{base}/cpu/{data.arch}">{data.arch}</a>
 					</td>
 				</tr>
 				<tr>
@@ -54,7 +55,7 @@ import type { Target } from '$lib/target';
 			<h2>CPUs</h2>
 			<ul class="list-disc list-inside">
 				{#each data.cpus as cpu}
-					<li><a href="/cpu/{data.arch}/{cpu}"><code>{cpu}</code></a></li>
+					<li><a href="{base}/cpu/{data.arch}/{cpu}"><code>{cpu}</code></a></li>
 				{/each}
 			</ul>
 		</div>
