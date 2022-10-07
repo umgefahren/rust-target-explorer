@@ -1,3 +1,4 @@
+import Pkg; Pkg.add("JSON")
 import JSON
 
 function get_target_list()
