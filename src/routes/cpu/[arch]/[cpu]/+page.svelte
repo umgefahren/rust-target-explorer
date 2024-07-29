@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { base } from '$app/paths';
-    import type { Cpu, cpus_on_arch } from '$lib/cpu';
+	import type { Cpu, cpus_on_arch } from '$lib/cpu';
 	import type { Feature } from '$lib/target';
 
 	export let data: {
@@ -10,15 +10,15 @@
 		feats_enabled: boolean[];
 	};
 
-    if (data.cpu === undefined) {
-        data.cpu = {
-            name: "undefined",
-            arch: data.arch,
-            targets: [],
-            endianess: "undefined",
-            features: []
-        }
-    }
+	if (data.cpu === undefined) {
+		data.cpu = {
+			name: 'undefined',
+			arch: data.arch,
+			targets: [],
+			endianess: 'undefined',
+			features: []
+		};
+	}
 </script>
 
 <svelte:head>

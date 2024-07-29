@@ -1,19 +1,19 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import { cpus_on_arch } from '$lib/cpu';
-import type { Target } from '$lib/target';
+	import type { Target } from '$lib/target';
 	export let data: Target;
 </script>
 
 <svelte:head>
-	<title>Overview of the { data.name } Rust target.</title>
-	<meta name="description" content="Overview of the {data.name} Rust target.">
+	<title>Overview of the {data.name} Rust target.</title>
+	<meta name="description" content="Overview of the {data.name} Rust target." />
 </svelte:head>
 
 <div class="p-4">
 	<div class="bg-blue-300 p-2 rounded-lg breadcrumbs">
 		<ul>
-            <li><a href="{base}/">Home</a></li>
+			<li><a href="{base}/">Home</a></li>
 			<li><a href="{base}/targets/">Target</a></li>
 			<li>{data.name}</li>
 		</ul>
@@ -59,29 +59,29 @@ import type { Target } from '$lib/target';
 				{/each}
 			</ul>
 		</div>
-        <table class="border-4 mt-4 w-full">
-            <thead class="bg-blue-300">
-                <tr>
-                    <th class="border-4 p-2">Feature Name</th>
-                    <th class="border-4 p-2">Feature Explanation</th>
-                    <th class="border-4 p-2">LLVM</th>
-                </tr>
-            </thead>
-            <tbody>
-                {#each data.features as feature}
-                    <tr>
-                        <td class="border-4 p-2">{feature.name}</td>
-                        <td class="border-4 p-2">{feature.explanation}</td>
-                        <td class="border-4 p-2 text-center">
-                            {#if feature.llvm}
-                                ✅
-                            {:else}
-                                ⛔️
-                            {/if}
-                        </td>
-                    </tr> 
-                {/each}
-            </tbody>
-        </table>
+		<table class="border-4 mt-4 w-full">
+			<thead class="bg-blue-300">
+				<tr>
+					<th class="border-4 p-2">Feature Name</th>
+					<th class="border-4 p-2">Feature Explanation</th>
+					<th class="border-4 p-2">LLVM</th>
+				</tr>
+			</thead>
+			<tbody>
+				{#each data.features as feature}
+					<tr>
+						<td class="border-4 p-2">{feature.name}</td>
+						<td class="border-4 p-2">{feature.explanation}</td>
+						<td class="border-4 p-2 text-center">
+							{#if feature.llvm}
+								✅
+							{:else}
+								⛔️
+							{/if}
+						</td>
+					</tr>
+				{/each}
+			</tbody>
+		</table>
 	</div>
 </div>

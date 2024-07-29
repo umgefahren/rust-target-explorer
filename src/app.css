@@ -4,5 +4,5 @@
 
 .vertical.Text span,
 .vertical.Text {
-  writing-mode: vertical-rl;
+	writing-mode: vertical-rl;
 }

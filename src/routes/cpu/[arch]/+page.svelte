@@ -9,20 +9,25 @@
 		feats: Feature[];
 		cpus_feats_enabled: boolean[][];
 	};
-    let with_llvm: boolean = false
-    $: feats = data.feats.filter((f) => (f.llvm && with_llvm) || !f.llvm)
-    $: cpu_feats_enabled = data.cpus_feats_enabled.map((c) => c.filter((v, idx) => idx < feats.length))
+	let with_llvm: boolean = false;
+	$: feats = data.feats.filter((f) => (f.llvm && with_llvm) || !f.llvm);
+	$: cpu_feats_enabled = data.cpus_feats_enabled.map((c) =>
+		c.filter((v, idx) => idx < feats.length)
+	);
 </script>
 
 <svelte:head>
-	<title>Overview of all cpus with the architecture { data.arch } of the Rust compiler.</title>
-	<meta name="description" content="Overview of all cpus with the architecture { data.arch } of the Rust compile.">
+	<title>Overview of all cpus with the architecture {data.arch} of the Rust compiler.</title>
+	<meta
+		name="description"
+		content="Overview of all cpus with the architecture {data.arch} of the Rust compile."
+	/>
 </svelte:head>
 
 <div class="p-4">
 	<div class="bg-blue-300 p-2 rounded-lg breadcrumbs">
 		<ul>
-            <li><a href="{base}/">Home</a></li>
+			<li><a href="{base}/">Home</a></li>
 			<li><a href="{base}/cpu/">CPU</a></li>
 			<li><a href="{base}/cpu/{data.arch}">{data.arch}</a></li>
 		</ul>
@@ -37,12 +42,12 @@
 				<li><a href="{base}/cpu/{data.arch}/{a.name}/">{a.name}</a></li>
 			{/each}
 		</ul>
-        <div class="form-control">
-            <label class="label cursor-pointer">
-              <span class="label-text">With LLVM only</span> 
-              <input type="checkbox" bind:checked={with_llvm}  class="checkbox" />
-            </label>
-          </div>
+		<div class="form-control">
+			<label class="label cursor-pointer">
+				<span class="label-text">With LLVM only</span>
+				<input type="checkbox" bind:checked={with_llvm} class="checkbox" />
+			</label>
+		</div>
 		<div class="overflow-scroll">
 			<table class="m-2">
 				<thead>
@@ -66,7 +71,7 @@
 									<td class="p-2 border-4 border-black bg-green-400 text-center align-middle">
 										✅
 									</td>
-                                {:else if !en && data.feats[idy].llvm}
+								{:else if !en && data.feats[idy].llvm}
 									<td class="p-2 border-4 border-black bg-yellow-400 text-center align-middle">
 										⚙️
 									</td>

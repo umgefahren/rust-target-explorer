@@ -5,7 +5,7 @@
 
 <svelte:head>
 	<title>An explorer for the targets Rust can compile to.</title>
-	<meta name="description" content="An explorer for the targets Rust can compile to.">
+	<meta name="description" content="An explorer for the targets Rust can compile to." />
 </svelte:head>
 
 <header class="grid grid-cols-3 justify-items-center rounded-lg shadow-xl mr-5 ml-5 bg-blue-800">
@@ -17,12 +17,12 @@
 	<a href="{base}/targets">
 		<div class="text-3xl grid grid-cols-5">
 			<h1 class="col-span-3 self-center text-4xl ml-4">Targets</h1>
-            <div class="col-span-2 text-xl rounded-lg bg-blue-600 p-2">
-                <h2 class="m-2 pb-3">Output of:</h2>
-                <div class="rounded-lg bg-slate-800 m-3 p-3">
-                    <code class="text-white">$ rustc --print target-list</code>
-                </div>
-            </div>
+			<div class="col-span-2 text-xl rounded-lg bg-blue-600 p-2">
+				<h2 class="m-2 pb-3">Output of:</h2>
+				<div class="rounded-lg bg-slate-800 m-3 p-3">
+					<code class="text-white">$ rustc --print target-list</code>
+				</div>
+			</div>
 		</div>
 	</a>
 	<a href="{base}/cpu/">

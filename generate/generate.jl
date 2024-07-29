@@ -3,7 +3,7 @@ import JSON
 
 function get_target_list()
     cmd = `rustc --print target-list`
-    return filter((x) -> x != "",  split(read(cmd, String), '\n'))
+    return filter((x) -> x != "" && !startswith(x, "xtensa-esp32"),  split(read(cmd, String), '\n'))
 end
 
 function get_cpus(target)::Vector{String}
@@ -119,6 +119,9 @@ function getTarget(name)::Target
     cpus = get_cpus(name)
     target = Target(name, cfgs, cpus, features, arch, os, family) 
     for cpu in cpus
+	if startswith(cpu, "esp32") then
+		continue
+	end
         push!(cpus_coll, (arch, cpu))
         if haskey(cpus_on_target, (arch, cpu))
             current = cpus_on_target[(arch, cpu)]
@@ -162,6 +165,8 @@ function getCpu(name::String, arch::String, targets::Vector{Target})::Cpu
 end
 
 target_list = get_target_list()
+
+println(target_list)
 
 targets::Vector{Target} = map((target) -> getTarget(target), target_list)
 
