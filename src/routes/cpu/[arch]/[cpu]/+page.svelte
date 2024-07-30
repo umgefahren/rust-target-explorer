@@ -82,7 +82,11 @@
 			<tbody>
 				{#each data.feats as feature, idx}
 					<tr>
-						<td class="border-4 p-2">{feature.name}</td>
+						<td class="border-4 p-2">
+							<a href="/cpu/{data.arch}/feature/{feature.name}">
+								{feature.name}
+							</a>
+						</td>
 						<td class="border-4 p-2">{feature.explanation}</td>
 						<td class="border-4 p-2">
 							{#if feature.llvm}

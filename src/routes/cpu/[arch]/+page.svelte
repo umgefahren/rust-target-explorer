@@ -57,7 +57,8 @@
 						>
 						{#each feats as feature}
 							<th class="vertical Text p-2 border-4 border-black h-fit w-10"
-								><span>{feature.name}</span></th
+								><span><a href="/cpu/{data.arch}/feature/{feature.name}">{feature.name}</a></span
+								></th
 							>
 						{/each}
 					</tr>
