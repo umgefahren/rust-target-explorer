@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import type { Cpu } from '$lib/cpu';
-	import type { Feature, features_map } from '$lib/target';
+	import type { Feature } from '$lib/target';
 
 	export let data: {
 		arch: string;
@@ -12,7 +12,7 @@
 	let with_llvm: boolean = false;
 	$: feats = data.feats.filter((f) => (f.llvm && with_llvm) || !f.llvm);
 	$: cpu_feats_enabled = data.cpus_feats_enabled.map((c) =>
-		c.filter((v, idx) => idx < feats.length)
+		c.filter((_v, idx) => idx < feats.length)
 	);
 </script>
 

@@ -32,11 +32,11 @@
 <div class="p-4">
 	<div class="bg-blue-300 p-2 rounded-lg">
 		<h1 class="text-2xl m-3">{data.feature}</h1>
-		<p>{data.extended_feature.explanation}</p>
+		<p>{data.extended_feature?.explanation}</p>
 		<h2 class="text-xl m-3">CPUs:</h2>
 		<ul class="list-disc list-inside">
 			{#each cpus as cpu}
-				<li><a href="/cpu/{cpu.arch}/{cpu.name}">{cpu.name}</a></li>
+				<li><a href="/cpu/{data.arch}/{cpu}">{cpu}</a></li>
 			{/each}
 		</ul>
 	</div>
