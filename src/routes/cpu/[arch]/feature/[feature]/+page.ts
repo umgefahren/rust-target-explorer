@@ -4,7 +4,7 @@ import { features_map } from '$lib/target';
 
 export const load: PageLoad = async ({ params: { arch, feature } }) => {
 	const cpus_with_feature = cpus
-		.filter(({ features }) => features.includes(feature))
+		.filter(({ features, arch: cpuArch }) => features.includes(feature) && cpuArch === arch)
 		.map(({ name }) => name);
 	const extended_feature = features_map.get(arch)?.find(({ name }) => name === feature);
 	return {
