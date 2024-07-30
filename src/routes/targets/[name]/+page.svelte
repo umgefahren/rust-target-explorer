@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { base } from '$app/paths';
-	import { cpus_on_arch } from '$lib/cpu';
 	import type { Target } from '$lib/target';
 	export let data: Target;
 </script>

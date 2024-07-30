@@ -1,8 +1,14 @@
 <script lang="ts">
 	import { base } from '$app/paths';
-	import targets from '$lib/assets/data/data.json';
-
 	import type { Target, Feature } from '$lib/target';
+
+	type PureTarget = Pick<Target, 'name' | 'arch' | 'os' | 'family'> & {
+		cfgs: number;
+		cpus: number;
+		features: number;
+	};
+
+	export let data;
 
 	enum SortBy {
 		Name,
@@ -14,7 +20,7 @@
 		Family
 	}
 
-	function extract_feature(t: Target, by: SortBy): Feature[] | string | string[] {
+	function extract_feature(t: PureTarget, by: SortBy): number | string | string[] {
 		if (by == SortBy.Name) {
 			return t.name;
 		} else if (by == SortBy.Cfgs) {
@@ -33,8 +39,8 @@
 		throw new Error('Fuuuuuckk');
 	}
 
-	function sort_by_property(t: Target[], by: SortBy): Target[] {
-		return t.sort((a, b) => {
+	function sort_by_property(t: PureTarget[], by: SortBy): PureTarget[] {
+		return t.toSorted((a, b) => {
 			const a_prop = extract_feature(a, by);
 			const b_prop = extract_feature(b, by);
 			if (a_prop < b_prop) {
@@ -49,7 +55,7 @@
 
 	export let sort_by: SortBy = SortBy.Name;
 
-	$: ts = sort_by_property(targets, sort_by);
+	$: ts = sort_by_property(data.targets, sort_by);
 </script>
 
 <svelte:head>
@@ -158,11 +164,11 @@
 					>
 					<td class="border border-slate-700 p-2">{target.os}</td>
 					<td class="border border-slate-700 p-2">{target.family}</td>
-					<td class="border border-slate-700 p-2">{target.cfgs.length}</td>
+					<td class="border border-slate-700 p-2">{target.cfgs}</td>
 					<td class="border border-slate-700 p-2"
-						><a href="{base}/cpu/{target.arch}">{target.cpus.length}</a></td
+						><a href="{base}/cpu/{target.arch}">{target.cpus}</a></td
 					>
-					<td class="border border-slate-700 p-2">{target.features.length}</td>
+					<td class="border border-slate-700 p-2">{target.features}</td>
 				</tr>
 			{/each}
 		</tbody>

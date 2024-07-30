@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { base } from '$app/paths';
-	import cpus from '$lib/assets/data/cpus.json';
-	const arch = Array.from(new Set(cpus.map((cpu) => cpu.arch)));
+
+	export let data;
+	const arch = data.arch;
 </script>
 
 <div class="p-4">
