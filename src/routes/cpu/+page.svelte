@@ -17,7 +17,7 @@
 	<div class="bg-blue-300 p-2 rounded-lg">
 		<h1>Architectures:</h1>
 		<ul class="list-disc list-inside">
-			{#each arch.toSorted() as a}
+			{#each arch as a}
 				<li><a href="{base}/cpu/{a}/">{a}</a></li>
 			{/each}
 		</ul>

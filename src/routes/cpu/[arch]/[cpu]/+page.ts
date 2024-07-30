@@ -25,7 +25,7 @@ export async function load({ params }) {
 
 	const cpu_feats = new Set(cpu.features);
 
-	const feats = features_map.get(arch)?.toSorted((a, b) => a.name.localeCompare(b.name));
+	const feats = features_map.get(arch);
 
 	if (feats === undefined) {
 		return error(500, {
